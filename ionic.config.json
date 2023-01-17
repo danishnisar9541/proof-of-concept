@@ -1,0 +1,7 @@
+{
+  "name": "proof",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
