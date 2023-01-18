@@ -35,7 +35,7 @@
                 >
               </ion-item>
               <ion-item>
-                <ion-button expand="block" size="large" @click="location"
+                <ion-button expand="block" size="large" @click="geoLocation()"
                   >Get GPS location</ion-button
                 >
               </ion-item>
@@ -49,10 +49,19 @@
                   >Request all permissions</ion-button
                 >
               </ion-item>
-              <ion-item>
-                <ion-button class="record">record</ion-button>
-                <ion-button class="stop">stop</ion-button>
-              </ion-item>
+              <div>
+                <!-- <p>Longitude : {{ location.coords.longitude }}</p>
+                <p>Latitude : {{ location.coords.latitude }}</p> -->
+              </div>
+              <div v-if="audio">
+                <ion-item>
+                  <h4>Press Record To start Recording</h4>
+                </ion-item>
+                <ion-item>
+                  <ion-button class="record" size="medium">record</ion-button>
+                  <ion-button class="stop" size="medium">stop</ion-button>
+                </ion-item>
+              </div>
               <ion-item>
                 <div class="sound-clips">
                   <article class="clip"></article>
@@ -62,11 +71,11 @@
           </ion-col>
         </ion-row>
 
-        <!-- <ion-row>
-      <ion-col size="6" :key="photo" v-for="photo in photos">
-        <ion-img :src="photo.webviewPath"></ion-img>
-      </ion-col>
-    </ion-row> -->
+        <ion-row>
+          <ion-col size="6" :key="photo" v-for="photo in photos">
+            <ion-img :src="photo.webviewPath"></ion-img>
+          </ion-col>
+        </ion-row>
       </ion-grid>
     </ion-content>
   </ion-page>
@@ -86,9 +95,8 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  alertController
+  modalController,
 } from "@ionic/vue";
-
 export default {
   setup() {
     const { takePhoto, photos } = usePhotoGallery();
@@ -97,7 +105,6 @@ export default {
       photos,
     };
   },
-
   components: {
     IonPage,
     IonHeader,
@@ -118,7 +125,7 @@ export default {
       gettingLocation: false,
       errorStr: null,
     },
-    
+
     audio() {
       const record = document.querySelector(".record");
       const stop = document.querySelector(".stop");
@@ -138,7 +145,7 @@ export default {
             const mediaRecorder = new MediaRecorder(stream);
             record.onclick = () => {
               mediaRecorder.start();
-              record.style.background = "red";
+              record.style.border = "2px solid red";
               record.style.color = "black";
             };
             let chunks = [];
@@ -148,7 +155,7 @@ export default {
             };
             stop.onclick = () => {
               mediaRecorder.stop();
-              record.style.background = "";
+              record.style.border = "";
               record.style.color = "";
             };
             mediaRecorder.onstop = (e) => {
@@ -190,7 +197,7 @@ export default {
       }
     },
 
-    location() {
+    geoLocation() {
       if (!("geolocation" in navigator)) {
         this.errorStr = "Geolocation is not available.";
         return;
@@ -200,7 +207,7 @@ export default {
         (pos) => {
           this.gettingLocation = false;
           this.location = pos;
-          console.log(this.location);
+          console.log(pos['coords'])
         },
         (err) => {
           this.gettingLocation = false;
