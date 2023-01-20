@@ -57,6 +57,7 @@ export const useGallery = () => {
             key: PHOTO_STORAGE,
             value: JSON.stringify(photoss.value),
         });
+        
     };
     watch(photoss, cachePhotos);
     const loadSaved = async () => {

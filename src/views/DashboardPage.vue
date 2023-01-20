@@ -14,7 +14,7 @@
                 <ion-button
                   expand="block"
                   size="large"
-                  @click="CameraMicroPhone"
+                  @click="startVideoCapture()"
                   >Active camera and microphone</ion-button
                 >
               </ion-item>
@@ -46,7 +46,7 @@
                   >Get GPS location</ion-button
                 >
               </ion-item>
-              <ion-item>
+              <ion-item id="notifications">
                 <ion-button expand="block" size="large" @click="notification()"
                   >Trigger notification</ion-button
                 >
@@ -100,7 +100,13 @@
 import { usePhotoGallery } from "@/composable/usePhotogallery";
 import { useGallery } from "@/composable/useGallery";
 import { useRouter } from "vue-router";
-
+import {
+  Camera,
+  CameraResultType,
+  CameraSource,
+  Photo,
+  CameraDirection,
+} from "@capacitor/camera";
 import {
   IonPage,
   IonHeader,
@@ -121,6 +127,7 @@ export default {
     return {
       longitude: null,
       latitude: null,
+      videoUrl: null,
     };
   },
   setup() {
@@ -154,7 +161,28 @@ export default {
       gettingLocation: false,
       errorStr: null,
     },
-
+    notification() {
+      const button = document.getElementById("notifications");
+      button.addEventListener("click", () => {
+        Notification.requestPermission().then((result) => {
+          if (result === "granted") {
+            this.randomNotification();
+          }
+        });
+      });
+    },
+    randomNotification() {
+      const randomItem = Math.floor(Math.random() * 1);
+      const notifTitle = "test";
+      const notifBody = `Created by loop`;
+      const notifImg = ``;
+      const options = {
+        body: notifBody,
+        icon: notifImg,
+      };
+      new Notification(notifTitle, options);
+      // setTimeout(this.randomNotification, 30000);
+    },
     cancel() {
       this.$refs.modal.$el.dismiss(null, "cancel");
     },
@@ -181,7 +209,7 @@ export default {
     permission() {
       this.geoLocation();
       navigator.mediaDevices
-        .getUserMedia({audio:true,video:true})
+        .getUserMedia({ audio: true, video: true })
         .then((mediaStream) => {
           // const video = document.querySelector("video");
           // video.srcObject = mediaStream;
@@ -193,6 +221,17 @@ export default {
           // always check for errors at the end.
           console.error(`${err.name}: ${err.message}`);
         });
+    },
+    startVideoCapture() {
+      const options = {
+        quality: 100,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+        direction: CameraDirection.Front,
+      };
+
+      const video = Camera.getPhoto(options);
+      this.videoUrl = video.webPath;
     },
   },
 };
