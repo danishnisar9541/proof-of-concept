@@ -12,8 +12,13 @@ Description:
     to find location and many other.
 
 How to Install and Run the Project:
- 
-    Firstly install npm 'npm install'
+    Firstly install Ionic CLI
+
+        'npm install -g @ionic/cli'
+
+    Than ,Install npm by using the following command
+        
+        'npm install'
 
 after installing npm ,run the following command,
 
