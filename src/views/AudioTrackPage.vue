@@ -15,7 +15,7 @@
                   <h4>Press To Activate Microphone</h4>
                 </ion-item>
                 <ion-item>
-                    <ion-button  size="medium" @click="audio()">Activate Microphone</ion-button>
+                    <ion-button  size="medium" @click="audio()">Get Permission</ion-button>
                 </ion-item>
                 <ion-item >
                   <ion-button class="record"  size="medium" >record</ion-button>
