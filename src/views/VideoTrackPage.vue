@@ -15,7 +15,7 @@
               </ion-item>
               <ion-item>
                 <ion-button size="medium" @click="startVideoCapture()"
-                  >Activate Microphone & Camera</ion-button
+                  >Get Permission</ion-button
                 >
               </ion-item>
               <ion-item>

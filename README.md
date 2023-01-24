@@ -47,7 +47,7 @@ How to Use the Project:
 
 1 ) Activate Camera and Microphone
  
-        Just click on 'Activate Camera and Microphone' button and record your videos.
+        Just click on 'Activate Camera and Microphone' button and than click on 'Get Permission' to request for permission to access microphone & camera, than click on 'Start' to start recording and after recording click on 'Stop'.
 
 2 ) Activate Microphone 
 
