@@ -15,7 +15,7 @@
         </ion-row>
         <ion-row>
           <ion-col size="6" :key="pic" v-for="pic in photoss">
-            <ion-img :src="pic.webviewPath"></ion-img>
+            <ion-img  :src="pic.webviewPath"></ion-img>
           </ion-col>
         </ion-row>
         <ion-row>

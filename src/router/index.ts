@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import DashboardPage from '../views/DashboardPage.vue';
 import AudioTrackPage from '../views/AudioTrackPage.vue';
+import VideoTrackPage from '../views/VideoTrackPage.vue';
 import ImagePage from '../views/ImagePage.vue';
 
 const routes: Array<RouteRecordRaw> = [
@@ -24,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/images',
     name: 'ImagePage',
     component: ImagePage
+  },
+  {
+    path: '/video-tracks',
+    name: 'Videos',
+    component: VideoTrackPage
   },
 ]
 

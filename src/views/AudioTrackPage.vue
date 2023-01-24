@@ -118,11 +118,6 @@ export default {
               chunks = [];
               const audioURL = window.URL.createObjectURL(blob);
               audio.src = audioURL;
-
-            //   deleteButton.onclick = (e) => {
-            //     const evtTgt = e.target;
-            //     evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-            //   };
             };
           })
 

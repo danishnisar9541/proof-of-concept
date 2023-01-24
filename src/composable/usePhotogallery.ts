@@ -86,6 +86,7 @@ export const usePhotoGallery = () => {
         const fileName = new Date().getTime() + '.jpeg';
         const savedFileImage = await savePicture(photo, fileName);
         photos.value = [savedFileImage, ...photos.value];
+        
     };
     
     

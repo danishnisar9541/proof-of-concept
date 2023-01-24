@@ -9,18 +9,12 @@
       <ion-grid>
         <ion-row>
           <ion-col size="12">
-            <ion-list lines="none">
-              <!-- <ion-item>
-                <button id="get-access">Get access to camera</button>
-                <video autoplay></video>
-                <div class="canvas"></div>
-                
-              </ion-item> -->
+            <ion-list lines="none">        
               <ion-item>
                 <ion-button
                   expand="block"
                   size="large"
-                  @click="startVideoCapture()"
+                  @click="() => router.push('/video-tracks')"
                   >Active camera and microphone</ion-button
                 >
               </ion-item>
@@ -63,7 +57,6 @@
                 >
               </ion-item>
             </ion-list>
-            <!-- <button id="grabFrame">frams</button> -->
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -107,13 +100,7 @@
 import { usePhotoGallery } from "@/composable/usePhotogallery";
 import { useGallery } from "@/composable/useGallery";
 import { useRouter } from "vue-router";
-// import {
-//   Camera,
-//   CameraResultType,
-//   CameraSource,
-//   Photo,
-//   CameraDirection
-// } from "@capacitor/camera";
+
 import {
   IonPage,
   IonHeader,
@@ -180,8 +167,8 @@ export default {
     },
     randomNotification() {
       const randomItem = Math.floor(Math.random() * 1);
-      const notifTitle = "test";
-      const notifBody = `Created by loop`;
+      const notifTitle = "Proof of Concept ";
+      const notifBody = `Test Notification`;
       const notifImg = ``;
       const options = {
         body: notifBody,
@@ -228,60 +215,6 @@ export default {
           // always check for errors at the end.
           console.error(`${err.name}: ${err.message}`);
         });
-    },
-    startVideoCapture() {
-      // navigator.mediaDevices.getUserMedia({
-      //   video: {
-      //     mandatory: {
-      //       minAspectRatio: 1.333,
-      //       maxAspectRatio: 1.334,
-      //       facingMode: "user",
-      //     },
-      //     optional: [
-      //       { minFrameRate: 60 },
-      //       { maxWidth: 640 },
-      //       { maxHeigth: 480 },
-      //     ],
-      //   },
-      // });
-      // document
-      //   .querySelector("#get-access")
-      //   .addEventListener("click", async function init(e) {
-      //     try {
-      //       const stream = await navigator.mediaDevices.getUserMedia({
-      //         audio: false,
-      //         video: true,
-      //       });
-      //       const videoTracks = stream.getVideoTracks();
-      //       const track = videoTracks[0];
-      //       alert(`Getting video from: ${track.label}`);
-      //       document.querySelector("video").srcObject = stream;
-      //       document.querySelector("#get-access").setAttribute("hidden", true);
-      //       setTimeout(() => {
-      //         track.stop();
-      //       }, 10 * 1000);
-
-      //       const grabFrameButton = document.querySelector("#grabFrame");
-      //       const canvas = document.querySelector("canvas");
-      //       grabFrameButton.onclick = () => {
-      //         imageCapture
-      //           .grabFrame()
-      //           .then(function (imageBitmap) {
-      //             console.log("Grabbed frame:", imageBitmap);
-      //             canvas.width = imageBitmap.width;
-      //             canvas.height = imageBitmap.height;
-      //             canvas.getContext("2d").drawImage(imageBitmap, 0, 0);
-      //             canvas.classList.remove("hidden");
-      //           })
-      //           .catch(function (error) {
-      //             console.log("grabFrame() error: ", error);
-      //           });
-      //       };
-      //     } catch (error) {
-      //       alert(`${error.name}`);
-      //       console.error(error);
-      //     }
-      //   });
     },
 
     
