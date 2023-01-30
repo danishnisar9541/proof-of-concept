@@ -162,7 +162,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 @import "../scss/test.scss";
 #btnStart,
 #btnStop,

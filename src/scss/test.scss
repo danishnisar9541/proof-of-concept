@@ -1,10 +1,15 @@
 ion-content {
     width: 100%;
-
     ion-button {
         width: 100%;
         --background: #edf5ff;
         color: #0043ce;
         --background-activated: #edf5ff;
     }
+}
+ion-button {
+    width: 100%;
+    --background: #edf5ff;
+    color: #0043ce;
+    --background-activated: #edf5ff;
 }

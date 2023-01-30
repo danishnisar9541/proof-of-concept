@@ -212,5 +212,5 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import "../scss/test.scss"
+@import "../scss/test.scss";
 </style>

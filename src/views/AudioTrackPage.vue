@@ -132,7 +132,6 @@ export default {
   },
 };
 </script>
-<style scoped="scss">
-
-@import "../scss/test.scss"
+<style lang="scss" scoped>
+@import '../scss/test.scss';
 </style>
