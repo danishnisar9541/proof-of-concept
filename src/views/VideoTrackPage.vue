@@ -19,14 +19,14 @@
                 >
               </ion-item>
               <ion-item>
-                <ion-button id="btnStart" size="medium" >Start</ion-button>
-                <ion-button id="btnStop" size="medium" >Stop</ion-button>
+                <ion-button id="btnStart" size="medium">Start</ion-button>
+                <ion-button id="btnStop" size="medium">Stop</ion-button>
               </ion-item>
               <ion-item>
                 <video controls></video>
               </ion-item>
               <ion-item>
-                <video id="vid2" controls ></video>
+                <video id="vid2" controls></video>
               </ion-item>
             </ion-list>
           </ion-col>
@@ -71,18 +71,6 @@ export default {
   },
 
   methods: {
-    randomNotification(title,description) {
-      const randomItem = Math.floor(Math.random() * 1);
-      const notifTitle = title;
-      const notifBody = description;
-      const notifImg = ``;
-      const options = {
-        body: notifBody,
-        icon: notifImg,
-      };
-      new Notification(notifTitle, options);
-      // setTimeout(this.randomNotification, 30000);
-    },
     startVideoCapture() {
       const constraintObj = {
         audio: false,
@@ -133,7 +121,7 @@ export default {
             video.src = window.URL.createObjectURL(mediaStreamObj);
           }
 
-          video.onloadedmetadata = function (ev) {
+          video.onloadedmetadata = () => {
             //show in the video element what is being captured by the webcam
             video.play();
           };
@@ -142,36 +130,35 @@ export default {
           const start = document.getElementById("btnStart");
           const stop = document.getElementById("btnStop");
           const vidSave = document.getElementById("vid2");
-          start.style.display="inline-block";
-          stop.style.display="inline-block";
-          
+          start.style.display = "inline-block";
+          stop.style.display = "inline-block";
+
           const mediaRecorder = new MediaRecorder(mediaStreamObj);
           let chunks = [];
 
-          start.addEventListener("click", (ev) => {
+          start.addEventListener("click", () => {
             mediaRecorder.start();
-            start.style.border="2px solid red";
+            start.style.border = "2px solid red";
           });
-          stop.addEventListener("click", (ev) => {
+          stop.addEventListener("click", () => {
             mediaRecorder.stop();
-            start.style.border="";
+            start.style.border = "";
           });
           mediaRecorder.ondataavailable = function (ev) {
             chunks.push(ev.data);
           };
-          mediaRecorder.onstop = (ev) => {
+          mediaRecorder.onstop = () => {
             const blob = new Blob(chunks, { type: "video/mp4;" });
             chunks = [];
             const videoURL = window.URL.createObjectURL(blob);
             vidSave.src = videoURL;
-            vidSave.style.display="block"
+            vidSave.style.display = "block";
           };
         })
         .catch(function (err) {
           console.log(err.name, err.message);
         });
     },
-      
   },
 };
 </script>
@@ -187,7 +174,8 @@ ion-button {
   --background-activated: #edf5ff;
 }
 #btnStart,
-#btnStop,#vid2 {
+#btnStop,
+#vid2 {
   display: none;
 }
 </style>

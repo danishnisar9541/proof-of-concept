@@ -101,7 +101,7 @@ export default {
               record.style.border = "";
               record.style.color = "";
             };
-            mediaRecorder.onstop = (e) => {
+            mediaRecorder.onstop = () => {
               const clipContainer = document.createElement("article");
               const clipLabel = document.createElement("p");
               const audio = document.createElement("audio");

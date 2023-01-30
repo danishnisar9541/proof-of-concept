@@ -9,7 +9,7 @@
       <ion-grid>
         <ion-row>
           <ion-col size="12">
-            <ion-list lines="none">        
+            <ion-list lines="none">
               <ion-item>
                 <ion-button
                   expand="block"
@@ -46,7 +46,7 @@
                   >Get GPS location</ion-button
                 >
               </ion-item>
-              <ion-item id="notifications">
+              <ion-item>
                 <ion-button expand="block" size="large" @click="notification()"
                   >Trigger notification</ion-button
                 >
@@ -156,17 +156,14 @@ export default {
       errorStr: null,
     },
     notification() {
-      const button = document.getElementById("notifications");
-      button.addEventListener("click", () => {
-        Notification.requestPermission().then((result) => {
-          if (result === "granted") {
-            this.randomNotification();
-          }
-        });
+      Notification.requestPermission().then((result) => {
+        if (result === "granted") {
+          this.randomNotification();
+        }
       });
     },
     randomNotification() {
-      const randomItem = Math.floor(Math.random() * 1);
+      // const randomItem = Math.floor(Math.random() * 1);
       const notifTitle = "Proof of Concept ";
       const notifBody = `Test Notification`;
       const notifImg = ``;
@@ -204,20 +201,14 @@ export default {
       this.geoLocation();
       navigator.mediaDevices
         .getUserMedia({ audio: true, video: true })
-        .then((mediaStream) => {
-          // const video = document.querySelector("video");
-          // video.srcObject = mediaStream;
-          // video.onloadedmetadata = () => {
-          //   video.play();
-          // };
+        .then(() => {
+          console.log('granted')
         })
         .catch((err) => {
           // always check for errors at the end.
           console.error(`${err.name}: ${err.message}`);
         });
     },
-
-    
   },
 };
 </script>
