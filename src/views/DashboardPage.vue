@@ -100,7 +100,6 @@
 import { usePhotoGallery } from "@/composable/usePhotogallery";
 import { useGallery } from "@/composable/useGallery";
 import { useRouter } from "vue-router";
-
 import {
   IonPage,
   IonHeader,
@@ -202,7 +201,7 @@ export default {
       navigator.mediaDevices
         .getUserMedia({ audio: true, video: true })
         .then(() => {
-          console.log('granted')
+          console.log("granted");
         })
         .catch((err) => {
           // always check for errors at the end.
@@ -212,15 +211,6 @@ export default {
   },
 };
 </script>
-<style scoped>
-ion-centent {
-  width: 100%;
-}
-
-ion-button {
-  width: 100%;
-  --background: #edf5ff;
-  color: #0043ce;
-  --background-activated: #edf5ff;
-}
+<style scoped lang="scss">
+@import "../scss/test.scss"
 </style>

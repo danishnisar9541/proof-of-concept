@@ -132,19 +132,7 @@ export default {
   },
 };
 </script>
-<style scoped>
-ion-centent {
-  width: 100%;
-}
+<style scoped="scss">
 
-ion-button {
-  width: 100%;
-  --background: #edf5ff;
-  color: #0043ce;
-  --background-activated: #edf5ff;
-}
-.record , .stop{
-    display: none;
-}
-
+@import "../scss/test.scss"
 </style>

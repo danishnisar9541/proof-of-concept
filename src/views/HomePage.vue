@@ -25,7 +25,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #container {
   text-align: center;
   
@@ -53,4 +53,6 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue
 #container a {
   text-decoration: none;
 }
+
+
 </style>
